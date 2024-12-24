@@ -1,0 +1,26 @@
+		Part - B Lab(9)
+db.createCollection('Student')
+
+db.Student.insertMany([
+    { _id: 1, name: "John", age: 30, city: "New York", isActive: true },
+    { _id: 2, name: "Jane", age: 25, city: "Los Angeles", isActive: false },
+    { _id: 3, name: "Tom", age: 35, city: "Chicago", isActive: true },
+    { _id: 4, name: "Lucy", age: 28, city: "San Francisco", isActive: true },
+    { _id: 5, name: "David", age: 40, city: "Miami", isActive: false },
+    { _id: 6, name: "Eva", age: 23, city: "Boston", isActive: true },
+    { _id: 7, name: "Nick", age: 38, city: "Seattle", isActive: false },
+    { _id: 8, name: "Sophia", age: 27, city: "New York", isActive: true },
+    { _id: 9, name: "Liam", age: 32, city: "Los Angeles", isActive: false },
+    { _id: 10, name: "Olivia", age: 29, city: "San Diego", isActive: true }
+])
+
+
+show collections
+db.Student.find().pretty()
+db.Student.find({ age: 30})
+db.Student.find({ age: {$gt: 25}})
+db.Student.find({ age: 30,name: 'John'})
+db.Student.find({ age: {$in: [25,30,35]}})
+db.Student.find({ age: 30,name: 'John'})
+db.Student.find({ name: 'John',city: 'New York'})
+db.Student.find({ name: 'John',city: 'New York'} , { name: 1, age: 1, _id: 0})

@@ -1,0 +1,96 @@
+		Part - A Lab(9)
+use BANK_INFO
+db.createCollection(‘Deposit’)
+db.Deposit.insertMany([
+	{
+    ACTNO: 102,
+    CNAME: 'SUNIL',
+    BNAME: 'AJNI',
+    AMOUNT: 5000,
+    ADATE: '1996-01-04'
+},
+{
+    ACTNO: 103,
+    CNAME: 'MEHUL',
+    BNAME: 'KAROLBAGH',
+    AMOUNT: 3500,
+    ADATE: '1995-11-17'
+},
+{
+    ACTNO: 104,
+    CNAME: 'MADHURI',
+    BNAME: 'CHANDI',
+    AMOUNT: 1200,
+    ADATE: '1995-12-17'
+},
+{
+    ACTNO: 105,
+    CNAME: 'PRAMOD',
+    BNAME: 'M.G.ROAD',
+    AMOUNT: 3000,
+    ADATE: '1996-03-27'
+},
+{
+    ACTNO: 106,
+    CNAME: 'SANDIP',
+    BNAME: 'ANDHERI',
+    AMOUNT: 2000,
+    ADATE: '1996-03-31'
+},
+{
+    ACTNO: 107,
+    CNAME: 'SHIVANI',
+    BNAME: 'VIRAR',
+    AMOUNT: 1000,
+    ADATE: '1995-09-05'
+},
+{
+    ACTNO: 108,
+    CNAME: 'KRANTI',
+    BNAME: 'NEHRU PLACE',
+    AMOUNT: 5000,
+    ADATE: '1995-07-02'
+}
+])
+
+ ———db.Deposit.find({ AMOUNT: { $gt: 2000 } })
+————db.Deposit.find().sort({ AMOUNT: 1 })
+————db.Deposit.find().limit(3)
+————db.Deposit.find().skip(2).limit(3)
+
+db.Deposit.findOne()
+db.Deposit.insertOne({ 
+     ACTNO: 109,
+     CNAME: 'KIRTI',
+     BNAME: 'VIRAR',
+     AMOUNT: 3000,
+     ADATE: '1997-05-03'
+ })
+db.Deposit.insertMany([
+	{
+    ACTNO: 110,
+    CNAME: 'MITALI',
+    BNAME: 'ANDHERI',
+    AMOUNT: 4500,
+    ADATE: '1995-09-04'
+},
+{
+    ACTNO: 111,
+    CNAME: 'RAJIV',
+    BNAME: 'NEHRU PLACE',
+    AMOUNT: 7000,
+    ADATE: '1998-10-02'
+}
+])
+
+db.Deposit.find({ BNAME: 'VIRAR' })
+db.Deposit.find({ AMOUNT: {$gte: 3000,$lte: 5000} })
+db.Deposit.find({ AMOUNT: {$gte: 3000} , BNAME: 'VIRAR' })
+db.Deposit.find({}, { CNAME: 1, BNAME: 1, AMOUNT: 1, _id: 0 })
+db.Deposit.find().sort({ CNAME: 1 })
+db.Deposit.find().sort({ BNAME: -1 })
+db.Deposit.find().sort({ ACTNO: 1,AMOUNT: -1 })
+db.Deposit.find().limit(2)
+db.Deposit.find().sort({ ACTNO: 1 }).skip(2).limit(1)
+db.Deposit.find().sort({ ACTNO: 1 }).skip(5).limit(2)
+db.Deposit.countDocuments()
