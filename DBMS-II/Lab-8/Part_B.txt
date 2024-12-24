@@ -1,0 +1,18 @@
+		Part - B  Lab(8)
+
+use Computer
+db.createCollection('Faculty')
+db.Faculty.insertOne({ FID: 1, FNAME: "ANIL", BNAME: "CE", SALARY:10000, JDATE: "1995-03-01" })
+db.Faculty.insertMany([
+  { FID: 2, FNAME: "SUNIL", BNAME: "CE", SALARY: 50000, JDATE: "4-1-96" },
+  { FID: 3, FNAME: "MEHUL", BNAME: "IT", SALARY: 35000, JDATE: "17-11-95" },
+  { FID: 4, FNAME: "MADHURI", BNAME: "IT", SALARY: 12000, JDATE: "17-12-95" },
+  { FID: 5, FNAME: "PRMOD", BNAME: "CE", SALARY: 30000, JDATE: "27-3-96" },
+  { FID: 6, FNAME: "SANDIP", BNAME: "CE", SALARY: 20000, JDATE: "31-3-96" },
+  { FID: 7, FNAME: "SHIVANI", BNAME: "CE", SALARY: 10000, JDATE: "5-9-95" },
+  { FID: 8, FNAME: "KRANTI", BNAME: "IT", SALARY: 50000, JDATE: "2-7-95" }
+]);
+
+db.Faculty.find();
+db.Faculty.drop();
+db.dropDatabase();
