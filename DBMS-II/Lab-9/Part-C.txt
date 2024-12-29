@@ -1,0 +1,12 @@
+--1st
+db.Student.find({age: { $gte: 25, $lte: 35 }},{name:1,_id:0}).sort({ age: 1 })
+--2nd
+db.Student.find().sort({ name:1,age: -1 }).forEach(printjson)
+--3rd
+db.Student.find().limit(5)
+--4th
+db.Student.find().skip(3).limit(2).forEach(printjson)
+--5th
+db.Student.find({},{name : 1 , _id : 0}).sort({ age: -1 }).limit(1).forEach(printjson)
+--6th
+db.Student.find().skip(2).forEach(printjson)
