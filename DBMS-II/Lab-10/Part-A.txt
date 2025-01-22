@@ -1,0 +1,56 @@
+db.Student.updateMany({ name: "John" },{ $set: { age: 31 } });
+db.Student.updateMany({ city: "New York" },{ $set: { city: 'New Jersey' } });
+db.Student.updateMany({ age: { $gt: 35 } },{ $set: { isActive: false } });
+db.Student.updateMany({},{ $inc: { age: 1 } });
+db.Student.updateMany({ city: "Eva" },{ $set: { city: 'Cambridge' } });
+db.Student.updateMany({ name: 'Sophia' },{ $set: { isActive: false } });
+db.Student.updateMany({ age: { $lt: 30 } },{ $set : { city:'San Diego' } });
+db.Student.updateMany({},{$rename: { age: "years" }});
+db.Student.updateMany({ name:'Nick' },{$set: {isActive:true}});
+db.Student.updateMany({},{$set : {country:'USA'}});
+db.Student.updateMany({name:'David'},{$set:{city:'Orlando'}});
+db.Student.updateMany({},{$mul : {years:2}});
+db.Student.updateMany({name:'Tom'},{$unset:{city:''}});
+db.Student.updateMany({years:{$gt:30}},{$set:{premiumUser:true}})
+db.Student.updateMany({name:'Jane'},{$set:{isActive:true}});
+db.Student.updateMany({name:'Lucy'},{$set:{isActive:false}});
+db.Student.deleteOne({name:'Nick'});
+db.Student.find().forEach(printjson)
+db.Student.deleteMany({city:'New York'});
+db.Student.deleteMany({years:{$gt:35}});
+db.Student.deleteMany({name:'Olivia'});
+db.Student.deleteMany({age:{$lt:25}});
+db.Student.deleteOne({isActive:true});
+db.Student.deleteMany({city:'Los Angeles'});
+db.Student.deleteMany({city:{$exists:false}});
+db.Student.updateMany({ city: { $exists: true } },{ $rename: { city: "location" } },{ upsert: true });
+db.Student.updateMany({ name: 'John' },{ $rename: { name: "FullName" } },{ upsert: true });
+db.Student.updateMany({},{ $rename: { isActive: "Status" } },{ upsert: true });
+db.Student.updateMany({city : 'San Francisco'},{ $rename: { age: "yearsOld" } },{ upsert: true });
+
+-- 30th Query --
+db.createCollection('Employee',{
+    capped:true,
+    size:5120,
+    max:100,
+    validator:{
+        $jsonSchema:{
+            bsonType:"object",
+            required:["Ecode","Ename"],
+            properties:{
+                Ecode:{bsonType:"int"},
+                Ename:{bsonType:"string"},
+                Age:{bsonType:"int"},
+                City:{bsonType:"string"}
+            }
+        }
+    }
+}   
+)
+
+db.Employee.insertOne({Ecode:1,Ename:"John"});
+db.Employee.insertMany([
+  { Ecode : 2, Ename: 'Jane' , age : 25, city: "Los Angeles"},
+  { Ecode : 3, Ename: 'Tom' , age : 35},
+  { Ecode : 4, Ename: 'Lucy' , age : 28, city: "San Francisco", isActive : true}
+])
