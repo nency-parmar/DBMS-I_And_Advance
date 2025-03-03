@@ -1,0 +1,36 @@
+--- Part – C  ----
+1. Find students whose names start with a vowel (A, E, I, O, U).
+>db.Student.find({SNAME:{$regex:"^[AEIOU]"}})
+ 
+2. Find students whose CITY ends with 'pur' or 'bad'. 
+>db.Student.find({CITY:{$regex:"(pur|bad)$"}})
+
+3. Find students whose FEES starts with '1'. 
+
+4. Find students whose SNAME starts with 'K' or 'V'. 
+>db.Student.find({CITY:/(pur|bad)$/})
+
+5. Find students whose CITY contains exactly five characters.
+>db.Student.find({CITY:{$regex:"^.{5}$"}})
+ 
+6. Find students whose names do not contain the letter 'e'. 
+>db.Student.find({SNAME:{$not:{$regex:"e"}}})
+
+7. Find students whose CITY starts with 'Ra' and ends with 'ot'.
+>db.Student.find({CITY:{$regex:"^Ra.*ot$"}})
+ 
+8. Find students whose names contain exactly one vowel. 
+>db.Student.find({SNAME:{$regex:"^[^aeiou]*[aeiou][^aeiou]*$"}})
+
+9. Find students whose names start and end with the same letter.
+>db.Student.find({SNAME:{$regex:"^(.)./{1}$"}})
+ 
+10. Find students whose DEPARTMENT starts with either 'C' or 'E'. 
+   db.Student.find({DEPARTMENT:{$regex:"^[CE]"}})
+
+11. Find students whose SNAME has exactly 5 characters. 
+   db.Student.find({SNAME:{$regex:"^.{5}$"}})
+   db.Student.find({SNAME:{$regex:"^.....$"}})
+
+12. Find students whose GENDER is Female and CITY starts with 'A'. 
+  db.Student.find({GENDER:"Female",CITY:{$regex:"^A"}})

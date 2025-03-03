@@ -1,0 +1,31 @@
+------------ Part - B ------------
+
+1. Display documents where sname start with K.
+    => db.Student.find({sname:/^K/})
+
+2. Display documents where sname starts with Z or D. 
+    => db.Student.find({sname:/^[Z D]/})
+
+3. Display documents where city starts with A to R. 
+    => db.Student.find({city:/^[A R]/})
+
+4. Display students’ info whose name start with P and ends with i. 
+    => db.Student.find({sname:/^P*i$/i})
+
+5. Display students’ info whose department name starts with ‘C’. 
+    => db.Student.find({Department:/^C/i})
+
+6. Display name, sem, fees, and department whose city contains ‘med’ as three letters somewhere in city name.
+    => db.Student.find({city:/^med${3}/},{sname:1,sem:1,fees:1,department:1}) 
+
+7. Display name, sem, fees, and department who does not belongs to city Rajkot or Baroda.
+    => db.Student.find({city:{$not:{/^[Rajkot Baroda]$/}}},{sname:1,sem:1,fees:1,department:1}) 
+ 
+8. Find students whose names start with 'K' and are followed by any character. 
+    => db.Student.find({sname:/^K/i})
+
+9. Find students whose names end with 'a'.
+    => db.Student.find({sname:/a$/}) 
+
+10. Find students whose names contain 'ri'. (case-insensitive) 
+    => db.Student.find({sname:/^ri$/i})
